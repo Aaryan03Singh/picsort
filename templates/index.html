@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>PIC SORT</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@300&display=swap" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: "Handjet", cursive;
+    font-size: 2em;
+  }
+
+  .button {
+    background-color: #f17a16;
+    border-radius: 4px;
+    border: 0;
+    padding: 2.5px 7.5px;
+    transition: transform 0.1s ease-in-out;
+  }
+
+  .button:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+
+  .features {
+    text-align: center;
+    font-weight: 500;
+    font-size: 2.7em;
+    color: #fff9f5;
+    margin-top: 10%;
+
+  }
+
+  .type{
+    font-size: 1.5em;
+    animation: reveal 7s ease-in-out forwards 3s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+  .flex {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5em;
+    margin-bottom: 3.5em;
+    font-weight: 300;
+    font-size: 0.6em;
+    color: #fff9f5;
+  }
+
+  .feature-box {
+    text-align: center;
+    margin: 0.3em;
+  }
+
+  .feature-image {
+    height: 50rem;
+    width: 40rem;
+    object-fit: cover;
+    border-radius: 5%;
+    margin-bottom: 15px;
+  }
+
+
+  .footer{
+    background:#f17a16 ;
+    margin-top: 40px;
+  }
+
+  a{
+    text-decoration: none;
+    color: white;
+  }
+  a:hover{
+    color: white;
+    text-decoration: none;
+  }
+
+</style>
+
+
+<body>
+  <div class="brand-container" style="display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  margin-top: 1em;">
+    <img src="https://i.ibb.co/zG13g5G/logo.png" alt="Brand_Logo" class="logo" height="200px" style="object-fit: cover" />
+    <h1 class="brand-name" style="  text-align: center; font-weight: 600; font-size: 4em; color: #f17a16;margin-left: 40px; margin-right: 10px;">PIC-SORT</h1>
+    <h4 class="brand-tag" style="margin-top: 50px; font-weight: 600;">(Your Memories, Seamlessly Sorted)</h4>
+  </div>
+
+  <div class="container" style="background-color: black">
+    <br /><br />
+    <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Upload Your Image :</label>
+        <div style="display: flex">
+          <input type="file" class="form-control" placeholder="Hours Studied" name="my_image"
+            accept=".jpeg, .jpg, .bmp, .png" id="pwd" multiple="multiple" />
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    {% if prediction %}
+
+    <div style="
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          margin-top: 3em;
+        ">
+      <div>
+        <img src="{{img_path}}" height="400px" width="400px" style="object-fit: cover" />
+      </div>
+      <h2>
+        The Picture is a
+        <i> <span style="color: #f17a16">{{prediction}}</span> </i>
+      </h2>
+
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="features">
+    Our Features
+    <div class="flex">
+      <div class="feature-box">
+        <img src="https://i.ibb.co/PN9MbKd/1.jpg" alt="Feature 1" class="feature-image">
+        <p>The Picture is a <i> <span class="type" style="color: #f17a16">Person</span> </i><br> <h3>The Software helps to segregate photos that <br>have a person in it.</h3></p>
+      </div>
+      <div class="feature-box">
+        <img src="https://images.unsplash.com/photo-1570641963303-92ce4845ed4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2NlbmFyeXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Feature 2" class="feature-image">
+        <p>The Picture is a <i> <span class="type" style="color: #f17a16">Scenery</span> </i><br> <h3>It helps to detect photos that <br>are sceneric.</h3></p>
+      </div>
+      <div class="feature-box">
+        <img src="https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdW1lbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Feature 3" class="feature-image">
+        <p>The Picture is a <i> <span class="type" style="color: #f17a16">Document</span> </i><br> <h3>It helps to detect the documents.</h3></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer" style="display: flex;justify-content: space-between;align-items: center;padding:0 1em;">
+    <span style="font-size: 1.25em; font-weight: 600">Thank You For Connecting</span>
+    <div style="display: flex;gap: 1em;">
+      <a target="_blank" href="https://www.linkedin.com/in/aaryan-singh-7644b1287/">
+
+        <span>Aaryan Singh</span>
+      </a>
+      <a target="_blank" href="https://www.linkedin.com/in/krishna-ganeriwal-57689b202/">
+
+        <span>Krishna Ganeriwal</span>
+      </a>
+      <a target="_blank" href="https://in.linkedin.com/in/vatsal-pandey-744652249">
+
+        <span>Vatsal Pandey</span>
+      </a>
+      <a target="_blank" href="https://www.linkedin.com/in/aaditya-mishra-95142621b">
+
+        <span>Aaditya Mishra</span>
+      </a>
+  </div>
+  </div>
+</body>
+
+</html>
